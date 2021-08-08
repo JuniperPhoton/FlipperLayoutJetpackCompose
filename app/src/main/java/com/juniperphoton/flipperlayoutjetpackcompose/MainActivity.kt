@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -81,8 +82,10 @@ fun FlipperContent(
     flipperSide: FlipperLayoutSide,
     onFlipperSideChanged: () -> Unit
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
+
     FlipperLayout(
-        modifier = Modifier.clickable {
+        modifier = Modifier.clickable(interactionSource = interactionSource, indication = null) {
             onFlipperSideChanged()
         },
         flipperSide = flipperSide,

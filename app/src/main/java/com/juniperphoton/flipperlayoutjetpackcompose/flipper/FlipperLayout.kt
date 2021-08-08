@@ -44,15 +44,8 @@ fun FlipperLayout(
 
     if (targetChanged || items.isEmpty()) {
         // Only manipulate the list when the state is changed, or in the first run.
-        val sides = items.map { it.side }.run {
-            if (!contains(flipperSide)) {
-                toMutableList().also { it.add(flipperSide) }
-            } else {
-                this
-            }
-        }
         items.clear()
-        sides.mapTo(items) { s ->
+        FlipperLayoutSide.values().mapTo(items) { s ->
             AnimationItem(s) {
                 val rotationX by transition.animateFloat(
                     transitionSpec = { animationSpec }, label = ""
