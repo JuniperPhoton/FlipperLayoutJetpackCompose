@@ -27,6 +27,43 @@ private data class AnimationItem(
     val content: @Composable () -> Unit
 )
 
+/**
+ * A layout uses flipping animation on [flipperSide] changed.
+ *
+ * You can specify the animation using [animationSpec] like duration. And describe your
+ * composable content using [content], which you can use different composable content
+ * based on the [flipperSide] in the [content] block.
+ *
+ * The caller side should like this:
+ *
+ * ```
+ * var flipperSide by remember {
+ *    mutableStateOf(FlipperLayoutSide.Front)
+ * }
+ *
+ * FlipperContent(flipperSide) {
+ *    flipperSide = flipperSide.flip()
+ * }
+ *
+ * @Composable
+ * fun FlipperContent(
+ *     flipperSide: FlipperLayoutSide,
+ *     onFlipperSideChanged: () -> Unit
+ * ) {
+ *     val interactionSource = remember { MutableInteractionSource() }
+ *
+ *     FlipperLayout(
+ *         modifier = Modifier.clickable(interactionSource = interactionSource, indication = null) {
+ *             onFlipperSideChanged()
+ *         },
+ *         flipperSide = flipperSide,
+ *         animationSpec = tween(300)
+ *     ) {
+ *        // your content
+ *     }
+ * }
+ * ```
+ */
 @Composable
 fun FlipperLayout(
     flipperSide: FlipperLayoutSide,
