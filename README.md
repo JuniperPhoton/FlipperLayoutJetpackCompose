@@ -7,7 +7,7 @@ A composable that uses flip transition to change two states: front and back.
 
 ## How to use
 
-> Currently you had to copy the source file `FlipperLayout.kt` to your project and make it work. Since it's quite simple I have no plan to publish to maven.
+> Currently you had to copy the source file [FlipperLayout.kt](https://github.com/JuniperPhoton/FlipperLayoutJetpackCompose/blob/main/app/src/main/java/com/juniperphoton/flipperlayoutjetpackcompose/flipper/FlipperLayout.kt) to your project and make it work. Since it's quite simple I have no plan to publish to maven.
 
 It's as simple as Jetpack Compose is:
 
